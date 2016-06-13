@@ -1,8 +1,7 @@
 {
   "name": "babel-plugin-async-to-plain-generator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Transform async functions into non-wrapped ES2015 generators",
-  "readme": "https://github.com/shellscape/babel-plugin-async-to-plain-generator#readme",
   "license": "MIT",
   "repository": {
     "type": "git",
