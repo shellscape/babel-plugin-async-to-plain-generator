@@ -11,6 +11,8 @@
 
 'use strict';
 
+const t = require('babel-types')
+
 module.exports = function remapHelper (path, callId) {
   let node = path.node;
   if (node.generator) return;
