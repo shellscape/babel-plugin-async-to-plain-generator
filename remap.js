@@ -11,18 +11,16 @@
 
 'use strict';
 
-const t = require('babel-types')
-
-module.exports = function remapHelper (path, callId) {
+module.exports = function remapHelper (path) {
   let node = path.node;
   if (node.generator) return;
 
   path.traverse(awaitVisitor);
 
   if (path.isClassMethod() || path.isObjectMethod()) {
-    return classOrObjectMethod(path, callId);
+    return classOrObjectMethod(path);
   } else {
-    return plainFunction(path, callId);
+    return plainFunction(path)
   }
 };
 
@@ -39,17 +37,11 @@ var awaitVisitor = {
   }
 };
 
-function classOrObjectMethod(path, callId) {
-  let node = path.node,
-    body = node.body,
-    container;
+function classOrObjectMethod(path) {
+  let node = path.node;
 
   node.async = false;
-
-  container = t.functionExpression(null, [], t.blockStatement(body.body), true);
-  container.shadow = true;
-
-  body.body = [t.returnStatement(t.callExpression(t.callExpression(callId, [container]), []))];
+  node.generator = true;
 }
 
 function plainFunction (path) {
