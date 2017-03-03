@@ -1,5 +1,14 @@
 # babel-plugin-async-to-plain-generator
 
+Babel plugin to transform async functions into plain, unwrapped generator functions.
+
+## &nbsp;
+<p align="center">
+  <b>:rocket: &nbsp; Are you ready to tackle ES6 and hone your JavaScript Skills?</b> &nbsp; :rocket:<br/>
+  Check out these outstanding <a href="https://es6.io/">ES6 courses</a> by <a href="https://github.com/wesbos">@wesbos</a>
+</p>
+---
+
 While working with [KoaJS v1](https://github.com/koajs/koa) we found that the resulting output from [transform-async-to-generator](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-async-to-generator) was incompatible with Koa's requirements - that `app.use` must be passed a generator function. 
 
 This plugin was created by modifying the transform-async-to-generator plugin. While that plugin works well in most situations, it curiously (and extraneously?) wraps async functions and results in a generator function wrapped in a regular function of the same name. This plugin was created so that babel would produce plain old vanilla generator functions from async function declarations.
